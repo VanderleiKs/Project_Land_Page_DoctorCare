@@ -16,3 +16,15 @@ function openMenu(){
 function closeMenu(){
     body.classList.remove('menu-expanded');
 }
+
+ScrollReveal({
+    origin: 'top',
+    distance: '90px',
+    duration: 900,
+}).reveal(
+`#home,
+#home img,
+#home .statics,
+#services,
+#services .cards
+`);
