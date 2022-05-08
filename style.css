@@ -4,6 +4,17 @@
     box-sizing: border-box;    
 }
 
+::-webkit-scrollbar{
+    width: 1rem;
+}
+::-webkit-scrollbar-track{
+    background: var(--brand-green);
+}
+::-webkit-scrollbar-thumb{
+    background: var(--primary-color);
+    border-radius: 5rem;
+}
+
 :root{
     font-size: 62.5%; /* 1rem = 10px*/
     --primary-color: #00856F;
