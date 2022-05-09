@@ -19,13 +19,15 @@
 
 :root{
     font-size: 62.5%; /* 1rem = 10px*/
-    --primary-color: #e90fa7;
+
+    --hue: 211;
+    --primary-color: hsl(var(--hue), 100%, 26%);
     --headline: #212529;
     --paragraph: hsl(210, 9%, 31%);
     --brand-beige: hsl(39, 100%, 97%);
-    --brand-green: hsl(148, 23%, 89%);
+    --brand-green: hsl(calc(var(--hue) - 20), 23%, 89%);
     --bg-brand-green-light: hsl(180, 14%, 97%);
-
+    --brand-hover: hsl(var(--hue), 100%, 14%);
     --nav-height: 7.2rem;
 }
 
@@ -61,6 +63,29 @@ img{
     max-width: 100%;
 }
 
+.button-primary{
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 4rem;
+    text-decoration: none;
+    line-height: 20px;
+    font-size: 1.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.6rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: hsl(0, 0%, 100%);
+    margin-bottom: 6rem;
+    width: 26.3rem;
+    height: 6.2rem;
+    transition: background .2s;
+}
+.button-primary:hover{
+    background-color: var(--brand-hover);
+}
+
 section header h1{
     font-size: 3.4rem;
     line-height: 130%;
@@ -90,6 +115,29 @@ section .content{
     color: var(--paragraph);
 }
 
+.social-links{
+    display: flex;
+    justify-content: center;
+    gap: 3.2rem;
+}
+
+/*======= CUSTOM ==============================================*/
+nav .logo path[fill*="#00856F"]{
+    fill: var(--primary-color)
+}
+nav button path{
+    stroke: var(--primary-color);
+}
+
+#buttonBackToTop circle{
+    fill: var(--primary-color);
+}
+
+#contact li path{
+    stroke: var(--primary-color);
+}
+
+
 /*======= #HOME ==============================================*/
 #home{
     padding-top: calc(4.1rem + var(--nav-height));
@@ -105,6 +153,10 @@ section .content{
     top: 0;
     left: 0;
     z-index: -1;
+}
+
+#home .button-primary{
+    margin-inline: auto;
 }
 
 #home p{
@@ -164,22 +216,6 @@ nav .wrapper{
 nav.scroll{
     background: var(--primary-color);
 }
-nav .logo path:nth-child(7){
-    fill: var(--primary-color)
-}
-nav .logo path:nth-child(8){
-    fill: var(--primary-color)
-}
-nav .logo path:nth-child(9){
-    fill: var(--primary-color)
-}
-nav .logo path:nth-child(10){
-    fill: var(--primary-color)
-}
-nav button path{
-    stroke: var(--primary-color);
-}
-
 
 nav.scroll .logo path {
     fill: white;
@@ -194,28 +230,6 @@ nav.scroll button path {
     width: 26.3rem;
     object-position: 0 1.7rem;
 }
-
-a.button-primary{
-    background-color: var(--primary-color);
-    border: none;
-    border-radius: 4rem;
-    text-decoration: none;
-    line-height: 20px;
-    font-size: 1.4rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1.6rem;
-    text-transform: uppercase;
-    font-weight: 700;
-    color: hsl(0, 0%, 100%);
-    margin-bottom: 6rem;
-    width: 26.3rem;
-    height: 6.2rem;
-    margin-right: auto;
-    margin-left: auto;
-}
-
 /*========= MENU-EXPANDED =========================*/
 
 .menu{
@@ -234,6 +248,10 @@ body.menu-expanded > :not(nav){
 body.menu-expanded .open-menu{
     opacity: 0;
     visibility: hidden;
+}
+
+body.menu-expanded .close-menu path{
+    stroke: white;
 }
 
 body.menu-expanded .menu,
@@ -290,6 +308,7 @@ body.menu-expanded .menu{
     border: none;
     background-color: transparent;
     cursor: pointer;
+    
 }
 
 .menu .button{
@@ -308,11 +327,10 @@ body.menu-expanded .menu{
     margin-bottom: 6rem;
 }
 
-
-.social-links{
-    display: flex;
-    justify-content: center;
-    gap: 3.2rem;
+.menu .button:hover{
+    background: var(--primary-color);
+    color: white;
+    filter: brightness(1.3);
 }
 
 /*======= #SERVICES ==============================================*/
@@ -375,4 +393,56 @@ body.menu-expanded .menu{
     gap: 0.8rem;
     margin-bottom: 1.6rem;
 }
-    
+
+/*======= #FOOTER ==============================================*/
+
+footer{
+    background: var(--primary-color);
+    color: white;
+    text-align: left;
+    padding-block: 6rem;
+}
+
+footer p{
+    color: var(--brand-beige);
+    line-height: 2;
+    margin-bottom: 3.2rem;
+}
+
+footer .logo{
+    display: inline-block;
+    margin-bottom: 2.4rem;
+}
+
+footer .logo svg{
+    width: 23.6rem;
+    height: 3.1rem;
+}
+
+footer .logo path{
+    fill: white;
+}
+
+footer .social-links{
+    justify-content: flex-start;
+}
+
+/*======= #Button back top ==============================================*/
+
+#buttonBackToTop{
+    position: fixed;
+    bottom: 1rem;
+    right: 1.5rem;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(100%);
+    transition: 1.5s;
+}
+
+#buttonBackToTop.show{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
