@@ -4,6 +4,25 @@ onScroll();
 function onScroll(){
     navbarOnScroll();
     BackToTopButton();
+    activateMenuAtCurrentSection(home);
+    activateMenuAtCurrentSection(services);
+    activateMenuAtCurrentSection(about);
+    activateMenuAtCurrentSection(contact);
+}
+
+function activateMenuAtCurrentSection(section){
+    const targetLine = scrollY + innerHeight/2; //Linha horizontal no meio da tela
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.offsetHeight;
+    const sectionEnd = sectionTop + sectionHeight;
+    const sectionTopReachOrPassedTargetLine = targetLine >= sectionTop;
+
+    if(sectionTopReachOrPassedTargetLine && sectionEnd >= targetLine){
+        document.querySelector(`.menu a[href*=${section.getAttribute('id')}]`).classList.add('active');
+    }
+    else{
+        document.querySelector(`.menu a[href*=${section.getAttribute('id')}]`).classList.remove('active');
+    }
 }
 
 function navbarOnScroll(){

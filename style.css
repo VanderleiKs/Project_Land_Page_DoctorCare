@@ -488,7 +488,7 @@ section{
     padding-block: 16rem;
 }
 
-section h2{
+section .wrapper h2{
     font-size: 4rem;
     line-height: 5.2rem;
 }
@@ -685,7 +685,32 @@ section h2{
     grid-template-areas: 'A B';
 }
 
+#contact .wrapper h2{
+    width: 40.4rem;
+}
+
 #contact .wrapper .col-a{
     align-self: center;
 }
+
+/*======= FOOTER ==============================================*/
+footer .wrapper{
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 'A B';
+}
+
+footer .wrapper p{
+    margin-bottom: 0;
+}
+
+footer .wrapper .col-a{
+    align-self: center;
+}
+
+footer .wrapper .col-b{
+    align-self: center;
+    justify-self: end;
+}
+
+
 }
